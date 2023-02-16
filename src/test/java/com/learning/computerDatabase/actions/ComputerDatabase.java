@@ -23,4 +23,10 @@ public class ComputerDatabase {
     public static ActionBuilder viewDetails = http("View Computer details")
             .get("/computers/567")
             .headers(Headers.headers_1);
+
+    public static ActionBuilder getPage(String pageNumber) {
+        return http("Page #{"+pageNumber+"}")
+                .get("/computers?p=#{" + pageNumber + "}")
+                .headers(Headers.headers_1);
+    }
 }
