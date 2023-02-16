@@ -25,8 +25,14 @@ public class ComputerDatabase {
             .headers(Headers.headers_1);
 
     public static ActionBuilder getPage(String pageNumber) {
-        return http("Page #{"+pageNumber+"}")
+        return http("Page #{" + pageNumber + "}")
                 .get("/computers?p=#{" + pageNumber + "}")
+                .headers(Headers.headers_1);
+    }
+
+    public static ActionBuilder searchComputer() {
+        return http("Search with computer name")
+                .get("/computers?f=#{feederBuilder+}")
                 .headers(Headers.headers_1);
     }
 }

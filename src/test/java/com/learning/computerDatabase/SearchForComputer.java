@@ -7,8 +7,12 @@ import com.learning.computerDatabase.common.HttpProtocol;
 import io.gatling.javaapi.core.*;
 
 public class SearchForComputer extends Simulation {
+    FeederBuilder<String> feederBuilder=csv("search.csv").circular();
 
     private ScenarioBuilder scn = scenario("SearchForComputer")
+            //feed will create the session based on the headers present in csv file
+            // so inside your simulation you can access the session values
+            .feed(feederBuilder)
             .exec(ComputerDatabase.home_Page)
             .pause(4)
             .repeat(2,"counter")
@@ -17,7 +21,7 @@ public class SearchForComputer extends Simulation {
 //            .pause(3)
 //            .exec(ComputerDatabase.page2)
 //            .pause(7)
-            .exec(ComputerDatabase.search)
+            .exec(ComputerDatabase.searchComputer())
             .pause(2)
             .exec(ComputerDatabase.viewDetails);
 
