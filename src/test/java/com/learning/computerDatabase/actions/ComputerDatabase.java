@@ -32,7 +32,12 @@ public class ComputerDatabase {
 
     public static ActionBuilder searchComputer() {
         return http("Search with computer name")
-                .get("/computers?f=#{feederBuilder+}")
+                .get("/computers?f=#{feederBuilder}")
                 .headers(Headers.headers_1);
     }
+
+    public static ActionBuilder addComputer(){
+        return  http("Adding a new computer #{name} ").post("/computers").formParam("name","#{name}").formParam("introduced","#{introduced}").formParam("discontinued","#{discontinued}").formParam("company","#{company}").headers(Headers.headers_1);
+    }
+
 }
