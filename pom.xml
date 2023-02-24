@@ -36,7 +36,6 @@
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling-maven-plugin.version}</version>
                 <configuration>
-                    <!--   ...  -->
                     <runMultipleSimulations>true</runMultipleSimulations>
                     <includes>
                         <include>com.learning.computerDatabase.*</include>
