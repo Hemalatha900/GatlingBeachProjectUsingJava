@@ -1,4 +1,4 @@
-package com.learning.computerDatabase;
+package com.learning.computerDatabase.session;
 
 
 import io.gatling.javaapi.core.*;
