@@ -2,6 +2,9 @@ package com.learning.computerDatabase.actions;
 
 import com.learning.computerDatabase.common.Headers;
 import io.gatling.javaapi.core.ActionBuilder;
+import io.gatling.javaapi.core.ChainBuilder;
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.*;
 
 import static io.gatling.javaapi.http.HttpDsl.http;
 
@@ -11,6 +14,13 @@ public class ComputerDatabase {
     public static ActionBuilder home_Page = http("Home Page")
             .get("/computers")
             .headers(Headers.headers_0);
+
+
+    public static ChainBuilder getListofUsers= exec(http("List of users")
+            .get("api/users?page=2")
+            .check(status().is(200)));
+
+
     public static ActionBuilder page1 = http("Page one")
             .get("/computers?p=1")
             .headers(Headers.headers_1);
